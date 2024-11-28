@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # record shop
 
 This template should help get you started developing with Vue 3 in Vite.
@@ -39,3 +40,6 @@ npm run test:unit
 ```sh
 npm run lint
 ```
+=======
+
+>>>>>>> 8eba3696ecfd51c3d6468094430aba41ff3e9bef
