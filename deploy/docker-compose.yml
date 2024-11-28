@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  web:
+    image: record-shop:latest
+    build:
+      context: ../.
+      dockerfile: /Users/d507026/WebstormProjects/record-shop/deploy/docker/Dockerfile
+    ports:
+      - "8004:80"

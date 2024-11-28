@@ -1,0 +1,8 @@
+git fetch origin main
+
+git rebase origin/main
+
+git push --force origin my-feature
+
+
+https://docs.gitlab.com/ee/topics/git/git_rebase.html
