@@ -5,12 +5,13 @@ import { flushPromises, mount } from '@vue/test-utils'
 import router from '@/router/index.js'
 import { beforeEach } from 'vitest'
 import { createAlbumListDataPerPaginationSize, createPhotoListData } from '@/components/album/mocks/albumTestMocks.js'
-import { mountComponentWithStore, mountComponentWithStoreAndRouter, setMockData } from '@/utils/testHelper.js'
+import { mountComponentWithStoreAndRouter, setMockData } from '@/utils/testHelper.js'
 import { PAGINATION_SIZE } from '@/components/album/listing/paginationConstant.js'
 import { ApiException } from '@/services/apiException.js'
 import { errorHandling } from '@/utils/apiErrorHandling.js'
 import { createTestingPinia } from '@pinia/testing'
 import { nextTick } from 'vue'
+import { i18n } from '@/utils/languages/i18n.js'
 
 describe('AlbumPhotos', () => {
   afterEach(() => {
@@ -21,12 +22,7 @@ describe('AlbumPhotos', () => {
   describe('rendering', () => {
     let component
     beforeEach(() => {
-      component = mountComponentWithStore(AlbumPhotos, {
-        global: {
-          plugins: [
-            vuetify, router
-          ],
-        },
+      component = mountComponentWithStoreAndRouter(AlbumPhotos, {
         props: {
           id: "1"
         }
@@ -127,7 +123,7 @@ describe('AlbumPhotos', () => {
             vuetify, router, createTestingPinia({
                 stubActions: false, initialState: { listsOfAlbums: { albumsList: createAlbumListDataPerPaginationSize(1) } }
               }
-            )
+            ), i18n
           ],
         },
         props: {
@@ -181,7 +177,7 @@ describe('AlbumPhotos', () => {
             vuetify, router, createTestingPinia({
                 stubActions: false, initialState: { listsOfAlbums: { albumsList: createAlbumListDataPerPaginationSize(1) } }
               }
-            )
+            ), i18n
           ],
         },
         props: {
@@ -208,7 +204,7 @@ describe('AlbumPhotos', () => {
             vuetify, router, createTestingPinia({
                 stubActions: false, initialState: { listsOfAlbums: { albumsList: mockDataTest } }
               }
-            )
+            ), i18n
           ],
         },
         props: {
@@ -234,7 +230,7 @@ describe('AlbumPhotos', () => {
             vuetify, router, createTestingPinia({
                 stubActions: false, initialState: { listsOfAlbums: { albumsList: createAlbumListDataPerPaginationSize(1) } }
               }
-            )
+            ), i18n
           ],
         },
         props: {
@@ -267,7 +263,7 @@ describe('AlbumPhotos', () => {
             vuetify, router, createTestingPinia({
                 stubActions: false, initialState: { listsOfAlbums: { albumsList: createAlbumListDataPerPaginationSize(1) } }
               }
-            )
+            ), i18n
           ],
         },
         props: {
@@ -305,7 +301,7 @@ describe('AlbumPhotos', () => {
             vuetify, router, createTestingPinia({
                 stubActions: false, initialState: { listsOfAlbums: { albumsList: createAlbumListDataPerPaginationSize(1) } }
               }
-              )
+              ), i18n
           ],
         },
         props: {
@@ -328,7 +324,7 @@ describe('AlbumPhotos', () => {
             vuetify, router, createTestingPinia({
                 stubActions: false, initialState: { listsOfAlbums: { albumsList: createAlbumListDataPerPaginationSize(1) } }
               }
-            )
+            ), i18n
           ],
         },
         props: {
@@ -351,7 +347,7 @@ describe('AlbumPhotos', () => {
             vuetify, router, createTestingPinia({
                 stubActions: false, initialState: { listsOfAlbums: { albumsList: createAlbumListDataPerPaginationSize(1) } }
               }
-            )
+            ), i18n
           ],
         },
         props: {

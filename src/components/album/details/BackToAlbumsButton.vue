@@ -3,21 +3,24 @@
            :title="label"
            prepend-icon="mdi-arrow-left"
            data-test="to-albums-button"
-           color="blue">Back</v-btn>
+           color="blue">{{ t('buttons.back') }}</v-btn>
 </template>
 
 <script setup>
-  import { useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 
-  const label = 'To Albums'
+const { t } = useI18n()
 
-  const router = useRouter()
+const label = 'To Albums'
 
-  const rerouteToAlbums = () => {
-    router.push({ name: 'albums' })
-  }
+const router = useRouter()
 
-  //see other implementation in BackToAlbumsButton2.vue and another way of testing
+const rerouteToAlbums = () => {
+  router.push({ name: 'albums' })
+}
+
+//see other implementation in BackToAlbumsButton2.vue and another way of testing
 </script>
 
 <style scoped>

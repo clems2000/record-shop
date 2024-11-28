@@ -3,6 +3,7 @@ import { mount } from '@vue/test-utils'
 import vuetify from '@/plugins/vuetify.js'
 import router from '@/router/index.js'
 import NotFoundView from '@/views/NotFoundView.vue'
+import { i18n } from '@/utils/languages/i18n.js'
 
 
 describe('NotFoundView', () => {
@@ -13,7 +14,7 @@ describe('NotFoundView', () => {
     const component = mount(NotFoundView, {
       global: {
         plugins: [
-          vuetify, router
+          vuetify, router, i18n
         ],
       }
     })

@@ -56,7 +56,6 @@ describe('CreateAlbumForm', () => {
       expect(component.find('[data-test="id-input-create-album"]').attributes('disabled'))
     })
 
-    //TODO why is the required not being found?
     it('should have a submit button, it should be disabled if Title is empty and show required', async () => {
       const input = component.find('[data-test="title-input-create-album"]').find('input')
       input.element.value = "qwertz"
@@ -69,8 +68,6 @@ describe('CreateAlbumForm', () => {
       expect(component.find('[data-test="submit-create-album"]').exists()).toBe(true)
       expect(component.find('[data-test="submit-create-album"]').element.disabled).toBe(true)
     })
-
-    //TODO submit is clickable when correct values are entered
 
     it('should have a submit button, it should be disabled if userId is empty and show required', async () => {
       let newUserId = "123"

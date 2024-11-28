@@ -2,7 +2,7 @@
   <v-card>
     <v-row>
       <v-col class="text-start align-self-start">
-        <v-card-title>Are you sure you want to delete the "{{title}}" album?</v-card-title>
+        <v-card-title>{{ t('albumPageDetails.confirmDelete', {title}) }}</v-card-title>
       </v-col>
     </v-row>
     <v-row>
@@ -12,11 +12,11 @@
                prepend-icon="mdi-minus-circle"
                @click="$emit('closeDialog')"
                class="cancel-button"
-               data-test="cancel-button" >Cancel</v-btn>
+               data-test="cancel-button">{{ t('buttons.cancel') }}</v-btn>
         <v-btn color="error"
                prepend-icon="mdi-delete-outline"
                @click="$emit('closeDialogWithDelete', id)"
-               data-test="confirm-delete-button">Delete</v-btn>
+               data-test="confirm-delete-button">{{ t('buttons.delete') }}</v-btn>
       </v-col>
     </v-row>
   </v-card>
@@ -24,6 +24,10 @@
 
 
 <script setup>
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
 defineProps({
   id: Number,
   title: String

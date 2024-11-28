@@ -1,17 +1,19 @@
-export const BADREQUESTMESSAGE = "Not found"
-export const SERVERERRORMESSAGE = "Server error"
-export const SOMETHINGWENTWRONGMESSAGE = "Something went wrong"
-export const NOTFOUNDMESSAGE = "Not found"
+import {i18n} from '@/utils/languages/i18n.js'
+
+export const BADREQUESTMESSAGE = 'apiErrorMessages.badRequest'
+export const SERVERERRORMESSAGE = "apiErrorMessages.serverError"
+export const SOMETHINGWENTWRONGMESSAGE = "apiErrorMessages.someThingWentWrong"
+export const NOTFOUNDMESSAGE = "apiErrorMessages.badRequest"
 
 export function errorHandling (error) {
   switch (error.status) {
     case 404:
-      return NOTFOUNDMESSAGE;
+      return i18n.global.t(NOTFOUNDMESSAGE);
     case 500:
-      return SERVERERRORMESSAGE;
+      return i18n.global.t(SERVERERRORMESSAGE);
     case 400:
-      return BADREQUESTMESSAGE;
+      return i18n.global.t(BADREQUESTMESSAGE);
     default:
-      return SOMETHINGWENTWRONGMESSAGE;
+      return i18n.global.t(SOMETHINGWENTWRONGMESSAGE);
   }
 }

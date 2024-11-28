@@ -2,7 +2,12 @@ export default {
   recordShop: 'Schallplattenladen',
   hello: 'Hallo welt',
   languages: {
-    language: 'Sprache'
+    english: 'Englisch',
+    german: 'Deutsch'
+  },
+  theme: {
+    light: 'Hell',
+    dark: 'Dunkel'
   },
   buttons: {
     save: "Speichern",

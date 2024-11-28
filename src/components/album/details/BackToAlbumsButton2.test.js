@@ -3,6 +3,7 @@ import { mount } from '@vue/test-utils'
 import vuetify from '@/plugins/vuetify.js'
 import RouteToAlbumsButton2 from '@/components/album/details/BackToAlbumsButton2.vue'
 import router from '@/router/index.js'
+import { i18n } from '@/utils/languages/i18n.js'
 
 
 describe('BackToAlbumsButton2', () => {
@@ -13,7 +14,7 @@ describe('BackToAlbumsButton2', () => {
     const component = mount(RouteToAlbumsButton2, {
       global: {
         plugins: [
-          vuetify, router
+          vuetify, router, i18n
         ],
       }
     })

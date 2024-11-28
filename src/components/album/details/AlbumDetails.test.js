@@ -1,6 +1,6 @@
 import { describe, expect, it, vi, afterEach, beforeEach } from 'vitest'
 import AlbumDetails from '@/components/album/details/AlbumDetails.vue'
-import { mountComponentWithStore, mountComponentWithStoreAndRouter } from '@/utils/testHelper.js'
+import { mountComponentWithStore } from '@/utils/testHelper.js'
 import { useAlbumsStore } from '@/stores/albumStore.js'
 import { createAlbumListDataPerPaginationSize } from '@/components/album/mocks/albumTestMocks.js'
 import { useRouter } from 'vue-router'
@@ -8,6 +8,7 @@ import { flushPromises, mount } from '@vue/test-utils'
 import router from '@/router/index.js'
 import vuetify from '@/plugins/vuetify.js'
 import { createTestingPinia } from '@pinia/testing'
+import { i18n } from '@/utils/languages/i18n.js'
 
 vi.mock('vue-router', async () => {
   const actual = await vi.importActual('vue-router')
@@ -65,7 +66,6 @@ describe('AlbumDetails', () => {
       expect(input.element.value).toBe(mockData[0].title)
       expect(store.findAlbumByIdFromStore).toHaveBeenCalledTimes(1);
     })
-
 
     it('should change change the album title after save button has been clicked, new title should also be displayed in input field', async() => {
       const newTitle = "New tests"
@@ -160,7 +160,8 @@ describe('AlbumDetails', () => {
             vuetify, router,
             createTestingPinia(
               { stubActions: false,
-                initialState: { listsOfAlbums: { albumsList: mockData } } })
+                initialState: { listsOfAlbums: { albumsList: mockData } } }),
+            i18n
           ]
         }, props: { id: "1" }
       })

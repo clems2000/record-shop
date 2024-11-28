@@ -3,6 +3,7 @@ import { mount } from '@vue/test-utils'
 import vuetify from '@/plugins/vuetify.js'
 import AlbumInformationHeader from '@/components/album/details/AlbumInformationHeader.vue'
 import router from '@/router/index.js'
+import { i18n } from '@/utils/languages/i18n.js'
 
 describe('AlbumInformationHeader', () => {
   it('should route to details path with tab click', async () => {
@@ -10,7 +11,7 @@ describe('AlbumInformationHeader', () => {
     const component = mount(AlbumInformationHeader, {
       global: {
         plugins: [
-          vuetify, router
+          vuetify, router, i18n
         ],
       },
       props: {
@@ -35,7 +36,7 @@ describe('AlbumInformationHeader', () => {
     const component = mount(AlbumInformationHeader, {
       global: {
         plugins: [
-          vuetify, router
+          vuetify, router, i18n
         ],
       },
       props: {
@@ -59,7 +60,7 @@ describe('AlbumInformationHeader', () => {
     const component = mount(AlbumInformationHeader, {
       global: {
         plugins: [
-          vuetify, router
+          vuetify, router, i18n
         ],
       },
       props: {
@@ -83,7 +84,7 @@ describe('AlbumInformationHeader', () => {
     const component = mount(AlbumInformationHeader, {
       global: {
         plugins: [
-          vuetify, router
+          vuetify, router, i18n
         ],
       },
       props: {

@@ -5,7 +5,7 @@
   </v-sheet>
   <v-sheet class="album-details">
     <v-form ref="form" v-model="valid" @submit.prevent="checkSubmit">
-      <v-toolbar-title>Title:</v-toolbar-title>
+      <v-toolbar-title>{{t('albumPageDetails.title') + ": " }}</v-toolbar-title>
             <v-text-field v-model="newAlbumTitle"
                           class="title-text-field"
                           :rules="[rules.required]"
@@ -22,7 +22,7 @@
                    type="submit"
                    :disabled="!valid"
                    class="save-new-title-button"
-                   color="green">Save</v-btn>
+                   color="green">{{t('buttons.save')}}</v-btn>
           </v-col>
         </v-row>
       </v-container>
@@ -39,6 +39,9 @@ import { onMounted, ref } from 'vue'
 import AlertMessage from '@/components/common/alert/AlertMessage.vue'
 import { useAlbumsStore } from '@/stores/albumStore.js'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const router = useRouter()
 
@@ -69,7 +72,7 @@ const rules = {
 
 function checkSubmit() {
     albumsStore.changeAlbumTitle(albumId, newAlbumTitle.value)
-    alertMessageReference.value = 'Album title changed successfully'
+    alertMessageReference.value = t('alertMessages.titleChangeSuccessful')
     showAlertReference.value = true
     albumReference.value = albumsStore.findAlbumByIdFromStore(albumId)
 }

@@ -134,7 +134,7 @@ describe('AlbumsDisplay', () => {
     })
 
     it('button should disable when an empty array is returned after next page click, end of pagination with pagination a multiple of albums list size', async() => {
-      const mockDataTest4 = createAlbumListDataPerPaginationSize(1);
+      const mockDataTest4 = createAlbumListDataPerPaginationSize(1)
       const fetchMock= setMockData(mockDataTest4);
       const component = mountComponentWithStore(AlbumsDisplay, {}, {stubActions: false});
       const store = useAlbumsStore()
@@ -176,7 +176,7 @@ describe('AlbumsDisplay', () => {
 
     it('should save the correct alert message when an ApiException error is thrown', async() => {
       const mockData = {};
-      const fetchMock= setMockData(mockData, 404, false);
+      const fetchMock = setMockData(mockData, 404, false);
 
       const expectedError = new ApiException(404)
       const message = errorHandling(expectedError)
@@ -246,9 +246,9 @@ describe('AlbumsDisplay', () => {
         const dialogComponent = component.findComponent({ name: 'DeleteDialogWindow' })
         expect(dialogComponent.exists()).toBe(true)
         await dialogComponent.find('[data-test="confirm-delete-button"]').trigger('click')
-        // expect(dialogComponent.exists()).toBe(false)
-      }
+        expect(dialogComponent.exists()).toBe(false)
 
+      }
       expect(store.deleteAlbumFromStore).toHaveBeenCalledTimes(PAGINATION_SIZE);
       // expect(store.findAlbumsForEachPageFromStore).toHaveBeenCalledTimes(13);
       expect(store.pageNumber).toBe(1);

@@ -1,9 +1,9 @@
 <template>
   <v-sheet>
     <div class="header">
-      <h1 class>Albums</h1>
+      <h1>{{ t('albumPageDetails.albums') }}</h1>
       <v-btn :to="{ name: 'createAlbum'}"
-             data-test="add-album-button">Add</v-btn>
+             data-test="add-album-button">{{ t('buttons.add') }}</v-btn>
     </div>
 
     <v-sheet class="albums-list">
@@ -33,6 +33,9 @@ import PaginationButtons from '@/components/album/listing/PaginationButtons.vue'
 import { useAlbumsStore } from '@/stores/albumStore.js'
 import { findAllAlbums } from '@/services/albumsApi.js'
 import { handleError } from '@/utils/handleDisplayError.js'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 //All code for store:
 const albumsStore = useAlbumsStore();
@@ -54,7 +57,7 @@ onMounted(() => {
 function reloadPageAndDeleteAlbum(id) {
   reloadBecauseOfDelete.value = true;
   albumsStore.deleteAlbumFromStore(id);
-  alertMessageReference.value = `Album with Id ${id} deleted`
+  alertMessageReference.value = t('alertMessages.albumDeleted', { id: id })
   showAlertReference.value = true;
   displayAlbumsOnPage()
 }
@@ -76,6 +79,10 @@ async function loadAlbumsListIntoStore() {
 }
 
 function displayAlbumsOnPage() {
+  if (reloadBecauseOfDelete.value === true && (albumsStore.albumsList.length % albumsStore.paginationLimit === 0)) {
+    albumsStore.previousPage()
+  }
+  reloadBecauseOfDelete.value = false;
   let albumsOnPage = albumsStore.findAlbumsForEachPageFromStore()
   if (checkIncomingResultLength(albumsOnPage)) {
     albumsReference.value = albumsOnPage;
@@ -100,7 +107,7 @@ function checkIncomingResultLength(result) {
 
 function disableNextButtonAndShowAlert() {
   nextBtnDisabledReference.value = true;
-  alertMessageReference.value = 'You are on the last page you can not go forward';
+  alertMessageReference.value = t('paginationAlerts.lastPage')
   showAlertReference.value = true;
 }
 

@@ -2,7 +2,12 @@ export default {
   recordShop: 'Record Shop',
   hello: 'Hello world',
   languages: {
-    language: 'Language'
+    english: 'English',
+    german: 'German'
+  },
+  theme: {
+    light: 'Light',
+    dark: 'Dark'
   },
   buttons: {
     save: "Save",

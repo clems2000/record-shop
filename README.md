@@ -39,10 +39,3 @@ npm run test:unit
 ```sh
 npm run lint
 ```
-
-
-
-### Run test coverage
-```sh
-npm run coverage
-```

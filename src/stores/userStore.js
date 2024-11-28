@@ -6,7 +6,13 @@ export const useUserStore = defineStore('userDetails', {
   state: () => {
     return {
       currentLanguage: useLocalStorage('language', 'en'),
-      languages: [{title: "English", id: 'en' }, { title: "Deutsch", id: 'de'}]
+      languages: [{title: "English", id: 'en' }, { title: "German", id: 'de'}],
+      currentTheme: useLocalStorage('darkMode', false)
+    }
+  },
+  getters: {
+    getCurrentTheme(state) {
+      return state.currentTheme
     }
   },
   actions: {
@@ -15,6 +21,9 @@ export const useUserStore = defineStore('userDetails', {
       if(languageExists) {
         this.currentLanguage = newLanguageId
       }
+    },
+    changeTheme(newTheme) {
+      this.currentTheme = newTheme
     }
   }
 });

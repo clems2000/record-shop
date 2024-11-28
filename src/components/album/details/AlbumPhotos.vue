@@ -1,5 +1,5 @@
 <template>
-  <h1>Photos for Album {{id}}</h1>
+  <h1>{{ t('albumPageDetails.photosForAlbums') }} {{id}}</h1>
   <br>
 
   <v-sheet>
@@ -33,6 +33,9 @@ import { PAGINATION_SIZE } from '@/components/album/listing/paginationConstant.j
 import AlertMessage from '@/components/common/alert/AlertMessage.vue'
 import { useAlbumsStore } from '@/stores/albumStore.js'
 import router from '@/router/index.js'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const props = defineProps({
   id: String
@@ -67,7 +70,7 @@ function nextPage() {
 
 function disableNextButtonAndShowAlert() {
   nextBtnDisabledReference.value = true;
-  alertMessage.value = 'You are on the last page you can not go forward';
+  alertMessage.value = t('paginationAlerts.lastPage');
   showAlert.value = true;
 }
 
@@ -98,8 +101,8 @@ async function loadPhotosList() {
     }
 
     } catch (error) {
-    alertMessage.value = handleError(error)
-    showAlert.value = true;
+      alertMessage.value = handleError(error)
+      showAlert.value = true;
     }
 }
 

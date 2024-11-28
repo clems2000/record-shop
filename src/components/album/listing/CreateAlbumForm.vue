@@ -1,9 +1,8 @@
 <template>
-  <h1>Create Album</h1>
+  <h1>{{ t('albumPageDetails.createAlbum') }}</h1>
 
 
   <v-form ref="form" v-model="valid" @submit.prevent="createNewAlbum">
-<!--TODO make the id-->
     <v-text-field
       disabled
       data-test="id-input-create-album"
@@ -11,7 +10,7 @@
 
     <v-text-field
       v-model="Title"
-      label="Title"
+      :label = "t('albumPageDetails.title')"
       :rules="[rules.required]"
       type="text"
       data-test="title-input-create-album"
@@ -36,7 +35,7 @@
             :disabled="!valid"
             color="green"
             data-test="submit-create-album"
-          >Create</v-btn>
+          >{{ t('buttons.create') }}</v-btn>
         </v-col>
       </v-row>
     </v-container>
@@ -48,6 +47,9 @@ import { onMounted, ref } from 'vue'
 import { useAlbumsStore } from '@/stores/albumStore.js'
 import { useRouter } from 'vue-router'
 import BackToAlbumsButton from '@/components/album/details/BackToAlbumsButton.vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const router = useRouter()
 
@@ -74,7 +76,7 @@ const rerouteToAlbumDetails = () => {
 }
 
 const rules = {
-  required: (v) => !!v || 'Required.'
+  required: (v) => !!v || t('formMessages.required')
 }
 
 function getNewAlbumId() {

@@ -3,12 +3,13 @@ import vuetify from '@/plugins/vuetify.js'
 import { vi } from 'vitest'
 import { createTestingPinia } from '@pinia/testing'
 import router from '@/router/index.js'
+import { i18n } from '@/utils/languages/i18n.js'
 
 export function mountComponent(component, options) {
   return mount(component, {
     global: {
       plugins: [
-        vuetify,
+        i18n, vuetify,
       ],
     },
     ...options
@@ -20,7 +21,8 @@ export function mountComponentWithRouter(component, options = {}) {
     global: {
       plugins: [
         vuetify,
-        router
+        router,
+        i18n
       ],
     },
     ...options
@@ -32,7 +34,8 @@ export function mountComponentWithStore(component, options = {}, storeOptions = 
     global: {
       plugins: [
         vuetify,
-        createTestingPinia(storeOptions)
+        createTestingPinia(storeOptions),
+        i18n
       ],
     },
     ...options
@@ -45,7 +48,8 @@ export function mountComponentWithStoreAndRouter(component, options = {}, storeO
       plugins: [
         vuetify,
         router,
-        createTestingPinia(storeOptions)
+        createTestingPinia(storeOptions),
+        i18n
       ],
     },
     ...options

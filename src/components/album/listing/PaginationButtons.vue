@@ -5,7 +5,7 @@
              @click="$emit('previousPage')"
              data-test="previous-page-button"
              color="brown">
-        Previous
+        {{ t('buttons.previous') }}
       </v-btn>
     </v-col>
     <v-col cols="5" class="text-right">
@@ -13,13 +13,17 @@
              @click="$emit('nextPage')"
              data-test="next-page-button"
              color="brown">
-        Next
+        {{ t('buttons.next') }}
       </v-btn>
     </v-col>
   </v-row>
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
 defineProps({
   prevBtnDisabled: {
     type: Boolean,

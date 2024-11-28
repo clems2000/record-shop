@@ -15,11 +15,7 @@ vi.mock('vue-router', async () => {
 })
 describe('AlbumPhotoView', () => {
   it('should render Photo details on mount', () => {
-    const component = mountComponentWithStore(AlbumPhotoView, {
-      global: {
-        plugins: [vuetify],
-      }
-    });
+    const component = mountComponentWithStore(AlbumPhotoView);
     expect(component.html()).not.toBe(null);
   })
 });
